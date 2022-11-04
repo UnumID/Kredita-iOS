@@ -1,0 +1,29 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-module-flags: -target x86_64-apple-ios15.5-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name UnumLogger
+import Foundation
+import MessageUI
+import Swift
+import UIKit
+@_exported import UnumLogger
+import _Concurrency
+@_hasMissingDesignatedInitializers final public class Logger {
+  final public var maxFileSize: Swift.UInt64
+  final public var maxFileCount: Swift.Int
+  final public var directory: Swift.String {
+    get
+    set
+  }
+  final public var currentPath: Swift.String {
+    get
+  }
+  final public var printToConsole: Swift.Bool
+  public static var instance: UnumLogger.Logger
+  final public func write(_ text: Swift.String)
+  final public func logw(_ text: Swift.String)
+  @objc deinit
+}
+extension UnumLogger.Logger {
+  final public func zipLogFiles(progress: ((_ progress: Swift.Double) -> ())?, completion: ((Foundation.URL) -> Swift.Void)?) throws
+  final public func sendLogsViaEmail(presentingViewController: UIKit.UIViewController, email: Swift.String, body: Swift.String, subject: Swift.String) throws
+}

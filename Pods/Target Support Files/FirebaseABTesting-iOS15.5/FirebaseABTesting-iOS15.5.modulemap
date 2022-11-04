@@ -1,0 +1,6 @@
+framework module FirebaseABTesting {
+  umbrella header "FirebaseABTesting-iOS15.5-umbrella.h"
+
+  export *
+  module * { export * }
+}

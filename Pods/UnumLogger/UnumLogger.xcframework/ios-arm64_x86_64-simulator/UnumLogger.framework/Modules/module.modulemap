@@ -1,0 +1,11 @@
+framework module UnumLogger {
+  umbrella header "UnumLogger.h"
+
+  export *
+  module * { export * }
+}
+
+module UnumLogger.Swift {
+    header "UnumLogger-Swift.h"
+    requires objc
+}

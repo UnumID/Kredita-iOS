@@ -1,0 +1,11 @@
+framework module UnumIDWebWallet {
+  umbrella header "UnumIDWebWallet.h"
+
+  export *
+  module * { export * }
+}
+
+module UnumIDWebWallet.Swift {
+    header "UnumIDWebWallet-Swift.h"
+    requires objc
+}

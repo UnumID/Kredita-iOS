@@ -1,0 +1,15 @@
+${PODS_ROOT}/Target Support Files/Pods-Kredita/Pods-Kredita-frameworks.sh
+${BUILT_PRODUCTS_DIR}/FirebaseABTesting-iOS15.5/FirebaseABTesting.framework
+${BUILT_PRODUCTS_DIR}/FirebaseCore-iOS15.5/FirebaseCore.framework
+${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics-iOS15.5/FirebaseCoreDiagnostics.framework
+${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal-iOS15.5/FirebaseCoreInternal.framework
+${BUILT_PRODUCTS_DIR}/FirebaseCrashlytics-iOS15.5/FirebaseCrashlytics.framework
+${BUILT_PRODUCTS_DIR}/FirebaseInstallations-iOS15.5/FirebaseInstallations.framework
+${BUILT_PRODUCTS_DIR}/FirebaseRemoteConfig-iOS15.5/FirebaseRemoteConfig.framework
+${BUILT_PRODUCTS_DIR}/GoogleDataTransport-iOS15.5/GoogleDataTransport.framework
+${BUILT_PRODUCTS_DIR}/GoogleUtilities-iOS15.5/GoogleUtilities.framework
+${BUILT_PRODUCTS_DIR}/PromisesObjC-iOS15.5/FBLPromises.framework
+${BUILT_PRODUCTS_DIR}/Zip-iOS15.5/Zip.framework
+${BUILT_PRODUCTS_DIR}/nanopb-iOS15.5/nanopb.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/LogRocket/LogRocket.framework/LogRocket
+${PODS_XCFRAMEWORKS_BUILD_DIR}/UnumLogger/UnumLogger.framework/UnumLogger

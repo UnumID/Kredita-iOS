@@ -1,0 +1,201 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-module-flags: -target arm64-apple-ios15.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name UnumIDWebWallet
+import AuthenticationServices
+import Foundation
+import MessageUI
+import SafariServices
+import Swift
+import SwiftUI
+import UIKit
+@_exported import UnumIDWebWallet
+import UnumLogger
+import WebKit
+import _AuthenticationServices_SwiftUI
+import _Concurrency
+extension Swift.Bool : Swift.Identifiable {
+  public var id: Swift.Bool {
+    get
+  }
+  public typealias ID = Swift.Bool
+}
+extension Foundation.URL : Swift.Identifiable {
+  public var id: Swift.String {
+    get
+  }
+  public typealias ID = Swift.String
+}
+public struct SafariView {
+  public typealias Configuration = SafariServices.SFSafariViewController.Configuration
+  public typealias DismissButtonStyle = SafariServices.SFSafariViewController.DismissButtonStyle
+  public init(url: Foundation.URL, configuration: UnumIDWebWallet.SafariView.Configuration = .init())
+  @available(iOS 14.0, *)
+  public func preferredBarAccentColor(_ color: SwiftUI.Color?) -> UnumIDWebWallet.SafariView
+  @available(iOS 14.0, *)
+  public func preferredControlAccentColor(_ color: SwiftUI.Color?) -> UnumIDWebWallet.SafariView
+  @available(iOS, introduced: 13.0, deprecated: 14.0, renamed: "preferredBarAccentColor(_:)")
+  public func preferredBarTintColor(_ color: UIKit.UIColor?) -> UnumIDWebWallet.SafariView
+  @available(iOS, introduced: 13.0, deprecated: 14.0, renamed: "preferredControlAccentColor(_:)")
+  public func preferredControlTintColor(_ color: UIKit.UIColor?) -> UnumIDWebWallet.SafariView
+  public func dismissButtonStyle(_ style: UnumIDWebWallet.SafariView.DismissButtonStyle) -> UnumIDWebWallet.SafariView
+}
+extension SafariServices.SFSafariViewController.Configuration {
+  convenience public init(entersReaderIfAvailable: Swift.Bool = false, barCollapsingEnabled: Swift.Bool = true)
+}
+public struct MailView : SwiftUI.UIViewControllerRepresentable {
+  public var configure: ((MessageUI.MFMailComposeViewController) -> Swift.Void)?
+  @objc @_hasMissingDesignatedInitializers public class Coordinator : ObjectiveC.NSObject, MessageUI.MFMailComposeViewControllerDelegate {
+    @objc public func mailComposeController(_ controller: MessageUI.MFMailComposeViewController, didFinishWith result: MessageUI.MFMailComposeResult, error: Swift.Error?)
+    @objc deinit
+  }
+  @_Concurrency.MainActor(unsafe) public func makeCoordinator() -> UnumIDWebWallet.MailView.Coordinator
+  @_Concurrency.MainActor(unsafe) public func makeUIViewController(context: SwiftUI.UIViewControllerRepresentableContext<UnumIDWebWallet.MailView>) -> MessageUI.MFMailComposeViewController
+  @_Concurrency.MainActor(unsafe) public func updateUIViewController(_ uiViewController: MessageUI.MFMailComposeViewController, context: SwiftUI.UIViewControllerRepresentableContext<UnumIDWebWallet.MailView>)
+  public typealias Body = Swift.Never
+  public typealias UIViewControllerType = MessageUI.MFMailComposeViewController
+}
+extension SwiftUI.View {
+  public func safariView(isPresented: SwiftUI.Binding<Swift.Bool>, onDismiss: (() -> Swift.Void)? = nil, content representationBuilder: @escaping () -> UnumIDWebWallet.SafariView) -> some SwiftUI.View
+  
+  public func safariView<Item>(item: SwiftUI.Binding<Item?>, onDismiss: (() -> Swift.Void)? = nil, content representationBuilder: @escaping (Item) -> UnumIDWebWallet.SafariView) -> some SwiftUI.View where Item : Swift.Identifiable
+  
+}
+extension UnumIDWebWallet.SafariView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  @available(iOS 14.0, *)
+  public func accentColor(_ accentColor: SwiftUI.Color?) -> UnumIDWebWallet.SafariView
+  public typealias Body = @_opaqueReturnTypeOf("$s15UnumIDWebWallet10SafariViewV4bodyQrvp", 0) __
+}
+public enum Enviroment {
+  case dev
+  case sandbox
+  case production
+  public var baseUrl: Swift.String {
+    get
+  }
+  public var webWalletUrl: Swift.String {
+    get
+  }
+  public static func == (a: UnumIDWebWallet.Enviroment, b: UnumIDWebWallet.Enviroment) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum PresentationRequestState {
+  case needsVerification(UnumIDWebWallet.Subject)
+  case ok
+}
+public struct Parameters {
+  public let userCode: Swift.String?
+  public let userEmail: Swift.String?
+  public let issuer: Swift.String?
+  public let enviroment: UnumIDWebWallet.Enviroment
+  public let scheme: Swift.String?
+  public let callback: Swift.String?
+  public let presentationRequestId: Swift.String?
+  public init(userCode: Swift.String? = nil, userEmail: Swift.String? = nil, issuer: Swift.String? = nil, scheme: Swift.String? = nil, callback: Swift.String? = nil, presentationRequestId: Swift.String? = nil, enviroment: UnumIDWebWallet.Enviroment = .production)
+}
+extension UnumIDWebWallet.Parameters {
+  public var webWalletURL: Foundation.URL {
+    get
+  }
+}
+public struct RequestValue : Swift.Codable {
+  public let dob: Swift.String
+  public let address: Swift.String
+  public let fullName: Swift.String
+  public let gender: Swift.String
+  public let docImage: Swift.String?
+  public init(dob: Swift.String, address: Swift.String, fullName: Swift.String, gender: Swift.String, docImage: Swift.String?)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public enum UnumError : Swift.Error, Foundation.LocalizedError {
+  case text(Swift.String)
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+public struct Subject {
+  public let did: Swift.String
+  public init(did: Swift.String)
+}
+public struct RequestResponse : Swift.Codable {
+  public let userCode: Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers final public class UnumID {
+  public static let shared: UnumIDWebWallet.UnumID
+  final public func sendRequest(input: UnumIDWebWallet.RequestValue, completion: @escaping (Swift.Result<UnumIDWebWallet.RequestResponse, Swift.Error>) -> Swift.Void) throws
+  final public func sendLogsViaEmail(presentingViewController: UIKit.UIViewController) throws
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class WebWallet {
+  public static let shared: UnumIDWebWallet.WebWallet
+  @objc deinit
+}
+extension UnumIDWebWallet.WebWallet {
+  public static func associate(on viewController: UIKit.UIViewController, with parameters: UnumIDWebWallet.Parameters, barTintColor: UIKit.UIColor? = nil, controlTintColor: UIKit.UIColor? = nil, completion: (() -> Swift.Void)? = nil)
+  public static func launch(url: Foundation.URL, on viewController: UIKit.UIViewController, barTintColor: UIKit.UIColor? = nil, controlTintColor: UIKit.UIColor? = nil, completion: (() -> Swift.Void)? = nil)
+}
+extension SwiftUI.View {
+  public func launchWebWallet(isPresented: SwiftUI.Binding<Swift.Bool>, parameters: UnumIDWebWallet.Parameters?, barTintColor: SwiftUI.Color? = nil, controlTintColor: SwiftUI.Color? = nil) -> some SwiftUI.View
+  
+  public func launchWebWalletWithSharedSafariSession(isPresented: SwiftUI.Binding<Swift.Bool>, parameters: UnumIDWebWallet.Parameters?, barTintColor: SwiftUI.Color? = nil, controlTintColor: SwiftUI.Color? = nil, prefersEphemeralWebBrowserSession: Swift.Bool = false, completion: ((Swift.Result<UnumIDWebWallet.PresentationRequestState, Swift.Error>) -> Swift.Void)?) -> some SwiftUI.View
+  
+}
+public struct WebAuthenticationSession {
+  public typealias CompletionHandler = AuthenticationServices.ASWebAuthenticationSession.CompletionHandler
+  public typealias OnCompletion = (_ result: Swift.Result<Foundation.URL, Swift.Error>) -> Swift.Void
+  public init(url: Foundation.URL, callbackURLScheme: Swift.String?, completionHandler: @escaping (_ callbackURL: Foundation.URL?, _ error: Swift.Error?) -> Swift.Void)
+  public init(url: Foundation.URL, callbackURLScheme: Swift.String?, onCompletion: @escaping (_ result: Swift.Result<Foundation.URL, Swift.Error>) -> Swift.Void)
+  public func prefersEphemeralWebBrowserSession(_ prefersEphemeralWebBrowserSession: Swift.Bool) -> UnumIDWebWallet.WebAuthenticationSession
+}
+public typealias WebAuthenticationSessionError = AuthenticationServices.ASWebAuthenticationSessionError
+public let WebAuthenticationSessionErrorDomain: Swift.String
+@objc @_hasMissingDesignatedInitializers public class WebAuthenticationController : ObjectiveC.NSObject, AuthenticationServices.ASWebAuthenticationPresentationContextProviding {
+  @objc public func presentationAnchor(for session: AuthenticationServices.ASWebAuthenticationSession) -> AuthenticationServices.ASPresentationAnchor
+  @objc deinit
+}
+extension SwiftUI.View {
+  public func webAuthenticationSession(isPresented: SwiftUI.Binding<Swift.Bool>, content representationBuilder: @escaping () -> UnumIDWebWallet.WebAuthenticationSession) -> some SwiftUI.View
+  
+  public func webAuthenticationSession<Item>(item: SwiftUI.Binding<Item?>, content representationBuilder: @escaping (Item) -> UnumIDWebWallet.WebAuthenticationSession) -> some SwiftUI.View where Item : Swift.Identifiable
+  
+}
+public struct LoadingView : SwiftUI.View {
+  public init(color: SwiftUI.Color, size: CoreGraphics.CGSize)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s15UnumIDWebWallet11LoadingViewV4bodyQrvp", 0) __
+}
+public struct LoadingWrapperView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s15UnumIDWebWallet18LoadingWrapperViewV4bodyQrvp", 0) __
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) final public class UnumIDSafariViewController : SafariServices.SFSafariViewController {
+  @_Concurrency.MainActor(unsafe) @objc override final public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override final public func didMove(toParent parent: UIKit.UIViewController?)
+  @_Concurrency.MainActor(unsafe) @objc override final public var preferredStatusBarStyle: UIKit.UIStatusBarStyle {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @available(iOS 11.0, *)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(url URL: Foundation.URL, configuration: SafariServices.SFSafariViewController.Configuration)
+  @available(iOS, introduced: 9.0, deprecated: 11.0)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(url URL: Foundation.URL, entersReaderIfAvailable: Swift.Bool)
+  @objc deinit
+}
+extension UnumIDWebWallet.UnumIDSafariViewController : SafariServices.SFSafariViewControllerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc final public func safariViewControllerDidFinish(_ controller: SafariServices.SFSafariViewController)
+  @_Concurrency.MainActor(unsafe) @objc final public func safariViewController(_ controller: SafariServices.SFSafariViewController, initialLoadDidRedirectTo URL: Foundation.URL)
+  @_Concurrency.MainActor(unsafe) @objc final public func safariViewController(_ controller: SafariServices.SFSafariViewController, didCompleteInitialLoad didLoadSuccessfully: Swift.Bool)
+}
+extension UnumIDWebWallet.Enviroment : Swift.Equatable {}
+extension UnumIDWebWallet.Enviroment : Swift.Hashable {}

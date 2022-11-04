@@ -1,0 +1,6 @@
+framework module Pods_Hooli {
+  umbrella header "Pods-Hooli-umbrella.h"
+
+  export *
+  module * { export * }
+}
